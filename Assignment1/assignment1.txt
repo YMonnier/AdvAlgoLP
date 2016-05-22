@@ -1,0 +1,29 @@
+* Social Part - "Mom got me a new computer"
+
+Implement the following pattern matching algorithms: Brute-force, Sunday, a version of KMP, a version of FSM, a version of Rabin-Karp.
+Compare their all runing times on a chapter of a book, with small and large pattern.
+Your report should contain description of algorithms, your findings and graphs RT against the text length.
+
+** Social Part Plus - "Flintstone's wacky invention"
+
+a) Include 'Binary' Sunday and both flavours of the FSM algorithm: FSM with engine by definition and FSM with engine in linear time
+(e.g. the pi function).
+b) Prove empirically that there can be situations in which
+- Sunday is at least twice as fast as Brute-force
+- Sunday is at least twice as fast as KMP
+- KMP is at least twice as fast as Rabin-Karp
+- Rabin-Karp is at least twice as fast as Sunday
+
+***** Premium Part - "Jewish-style carp"
+Devise a version of Rabin-Karp algorithm which will check if for a given
+picture M by N pixels large its top-right
+K by K corner is duplicated somewhere
+in the picture.
+Your algorithm should replace slow modulo prime operations with faster bitwise 
+mask &amp;'s (as described in the class). Do make sure that the RT
+is at most linear in the number of pixels in the text (in the same sense as in the case of classical RK).
+Maximum space allowed to use except for the space to hold the picture and the set structure is O(M+N).
+
+
+An exhaustive explanation of your algorithm should be
+given in your report.
