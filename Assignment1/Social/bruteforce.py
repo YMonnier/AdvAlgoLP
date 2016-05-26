@@ -16,15 +16,15 @@ def bruteForce(T, P):
 	m = len(P)
 
 	# Number of occurrences found
-	res = []
+	shifts = []
 
 	for i in xrange(0, n - m):
 		j = 0
 		while j < m and s[i + j] == pattern[j]:
 			j = j + 1
 		if j == m:
-			res.append(i)
-	return res
+			shifts.append(i)
+	return shifts
 
 
 #fileName = input('Your txt file: ')
