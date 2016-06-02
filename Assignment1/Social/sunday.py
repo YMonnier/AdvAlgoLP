@@ -1,13 +1,12 @@
 #
 # sunday.py
 # Author Ysee Monnier
+# University Of Lodz, Poland
 # String matching
 #
 
-import reader
-import string
 import time
-
+import string
 """
 	Preprocessing sunday
 	@param P: Text
@@ -43,6 +42,13 @@ def isInP(T, P, i):
 	Sunday Algorithm
 """
 def sunday(T, P):
+	print("****************************************************")
+	print("***************** Sunday Algorithm *****************")
+	print("****************************************************")
+	# Start timer
+	start_time = time.time()
+
+	#Preprocessing
 	occ = preprocessing(P)
 
 	i = 0
@@ -58,23 +64,7 @@ def sunday(T, P):
 		if i < n:
 			i -= occ[T[i]]
 
-	return shifts
+	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> %s matchings" % len(shifts))
+	print("	==> shifts " + str(shifts))
 
-#fileName = input('Your txt file: ')
-#pattern = input('Your pattern: ')
-
-fileName = 'book.txt'
-pattern = 'of'
-
-# Get content's file
-s = reader.readFile(fileName)
-
-# Start timer
-start_time = time.time()
-
-#Bruteforce
-shifts = sunday(s, pattern)
-
-print("Execution time: %s seconds" % (time.time() - start_time))
-print("%s matchings" % len(shifts))
-print("shifts " + str(shifts))

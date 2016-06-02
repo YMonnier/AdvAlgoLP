@@ -1,14 +1,19 @@
 #
 # bruteforce.py
 # Author Ysee Monnier
+# University Of Lodz, Poland
 # String matching
 #
 
-import reader
-import string
 import time
 
 def bruteForce(T, P):
+	print("*********************************************************")
+	print("***************** Brute Force Algorithm *****************")
+	print("*********************************************************")
+	# Start timer
+	start_time = time.time()
+
 	# Text length
 	n = len(T)
 
@@ -20,28 +25,11 @@ def bruteForce(T, P):
 
 	for i in xrange(0, n - m):
 		j = 0
-		while j < m and s[i + j] == pattern[j]:
+		while j < m and T[i + j] == P[j]:
 			j = j + 1
 		if j == m:
 			shifts.append(i)
-	return shifts
-
-
-#fileName = input('Your txt file: ')
-#pattern = input('Your pattern: ')
-
-fileName = 'book.txt'
-pattern = 'of'
-
-# Get content's file
-s = reader.readFile(fileName)
-
-# Start timer
-start_time = time.time()
-
-#Bruteforce
-shifts = bruteForce(s, pattern)
-
-print("Execution time: %s seconds" % (time.time() - start_time))
-print("%s matchings" % len(shifts))
-print("shifts " + str(shifts))
+	
+	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> %s matchings" % len(shifts))
+	print("	==> shifts " + str(shifts))
