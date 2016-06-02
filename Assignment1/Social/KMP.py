@@ -6,8 +6,6 @@
 # String matching
 #
 
-import reader
-import string
 import time
 
 #Table-building
