@@ -24,22 +24,22 @@ def rabinKarp(T, P):
 	t = 0
 	shifts = []
 	for i in range(m): # preprocessing
-		p = (d*p+ord(P[i]))%q
-		t = (d*t+ord(T[i]))%q
-	for s in range(n-m+1): # matching
+		p = (d * p + ord(P[i])) % q
+		t = (d * t + ord(T[i])) % q
+	for s in range(n - m + 1): # matching
 		if p == t:
 			match = True
 			for i in range(m):
-				if P[i] != T[s+i]:
+				if P[i] != T[s + i]:
 					match = False
 					break
 			if match:
 				shifts.append(s)
 		if s < n-m:
-			t = (t-h*ord(T[s]))%q # remove letter s
-			t = (t*d+ord(T[s+m]))%q # add letter s+m
-			t = (t+q)%q # make sure that t >= 0
+			t = (t - h * ord(T[s])) % q
+			t = (t * d + ord(T[s + m])) % q
+			t = (t + q) % q
 	
-	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	print("	==> shifts " + str(shifts))
+	#print("	==> shifts " + str(shifts))

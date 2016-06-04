@@ -43,9 +43,10 @@ def isInP(T, P, i):
 	Sunday Algorithm
 """
 def sunday(T, P):
-	print("****************************************************")
-	print("***************** Sunday Algorithm *****************")
-	print("****************************************************")
+	print("**************************************************")
+	print("**************** Sunday Algorithm ****************")
+	print("**************************************************")
+
 	# Start timer
 	start_time = time.time()
 
@@ -65,7 +66,7 @@ def sunday(T, P):
 		if i < n:
 			i -= occ[T[i]]
 
-	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	print("	==> shifts " + str(shifts))
+	#print("	==> shifts " + str(shifts))
 

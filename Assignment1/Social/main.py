@@ -15,10 +15,11 @@ import RabinKarp
 #pattern = input('Your pattern: ')
 
 fileName = 'book.txt'
-pattern = 'cheetah'
+pattern = 'unapproachable'
 
 
 print("	==> Pattern :: %s" %pattern)
+print("	==> Pattern Length :: %d" %len(pattern))
 
 # Get content's file
 s = reader.readFile(fileName)

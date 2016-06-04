@@ -45,6 +45,6 @@ def FSM(T, P):
 			q = 0
 			#shifts.append(i-m+1)
 
-	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	print("	==> shifts " + str(shifts))
+	#print("	==> shifts " + str(shifts))

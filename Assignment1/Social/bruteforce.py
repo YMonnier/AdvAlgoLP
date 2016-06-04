@@ -8,9 +8,10 @@
 import time
 
 def bruteForce(T, P):
-	print("*********************************************************")
-	print("***************** Brute Force Algorithm *****************")
-	print("*********************************************************")
+	print("*************************************************")
+	print("************* Brute Force Algorithm *************")
+	print("*************************************************")
+
 	# Start timer
 	start_time = time.time()
 
@@ -23,13 +24,13 @@ def bruteForce(T, P):
 	# Number of occurrences found
 	shifts = []
 
-	for i in xrange(0, n - m):
+	for i in xrange(0, n - (m-1)):
 		j = 0
 		while j < m and T[i + j] == P[j]:
 			j = j + 1
 		if j == m:
 			shifts.append(i)
 	
-	print("	==> Execution time: %s milliseconds" % ((time.time() - start_time)/1000))
+	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	print("	==> shifts " + str(shifts))
+	#print("	==> shifts " + str(shifts))
