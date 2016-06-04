@@ -14,8 +14,9 @@ import string
 def preprocessing(P):
 	m = len(P)
 	occ = {}
+	alphabet = string.ascii_letters + string.punctuation + string.digits + string.whitespace
 	# each character of the alphabet 
-	for char in string.printable:
+	for char in alphabet:
 		occ[char] = -1
 
 	for i in range(m): 
