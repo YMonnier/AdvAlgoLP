@@ -1,5 +1,5 @@
 #
-# sunday.py
+# Sunday.py
 # Author Ysee Monnier
 # University Of Lodz, Poland
 # String matching
