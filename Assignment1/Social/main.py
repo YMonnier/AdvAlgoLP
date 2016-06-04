@@ -10,6 +10,7 @@ import Bruteforce
 import Sunday
 import KMP
 import FSM
+import RabinKarp
 #fileName = input('Your txt file: ')
 #pattern = input('Your pattern: ')
 
@@ -33,3 +34,6 @@ KMP.KMP(s, pattern)
 
 #FSM Algorithm
 FSM.FSM(s, pattern)
+
+#Rabin-Karp Algorithm
+RabinKarp.rabinKarp(s, pattern)
