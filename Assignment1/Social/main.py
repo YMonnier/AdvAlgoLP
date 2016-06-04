@@ -9,7 +9,7 @@ import string
 import bruteforce
 import sunday
 import KMP
-
+import FSM
 #fileName = input('Your txt file: ')
 #pattern = input('Your pattern: ')
 
@@ -22,11 +22,14 @@ print("	==> Pattern :: %s" %pattern)
 # Get content's file
 s = reader.readFile(fileName)
 
-#Bruteforce
+#Bruteforce Algorithm
 bruteforce.bruteForce(s, pattern)
 
-#Sunday
+#Sunday Algorithm
 sunday.sunday(s, pattern)
 
-#KMP
+#KMP Algorithm
 KMP.KMP(s, pattern)
+
+#FSM Algorithm
+FSM.FSM(s, pattern)
