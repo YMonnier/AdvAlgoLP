@@ -27,9 +27,6 @@ s = reader.readFile(fileName)
 print("	==> Pattern :: %s" %pattern)
 print("	==> Pattern Length :: %d" %len(pattern))
 
-
-
-
 #Bruteforce Algorithm
 Bruteforce.bruteForce(s, pattern)
 

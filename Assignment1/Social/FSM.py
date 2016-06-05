@@ -42,14 +42,10 @@ def FSM(T, P):
 	n = len(T)
 	q = 0
 	for i in range(0, n):
-		#print("Trans lenght...  ::" + str(len(trans)))
-		#print("S ::" + str(q))
 		q = trans[q][T[i]]
-		if q == m:
-			#print("OKOK -- " + str(i-m+1))
+		if q == m:			
 			shifts.append(i-m+1)
 			q = 0
-			#shifts.append(i-m+1)
 
 	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))

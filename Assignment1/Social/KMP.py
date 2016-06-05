@@ -8,7 +8,7 @@
 
 import time
 
-#Table-building
+#Table-building, failure function
 def preprocessing(P):
 	m = len(P)
 	pi = [0] * m
@@ -54,5 +54,4 @@ def KMP(T, P):
 
 	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	#print("	==> %s matchings" % (j-1))	
 	#print("	==> shifts " + str(shifts))
