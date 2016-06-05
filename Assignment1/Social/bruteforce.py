@@ -7,6 +7,12 @@
 
 import time
 
+
+'''
+	Brute-Force Algorithm
+	@param T: The search area
+	@param P: The candidate to do the search
+'''
 def bruteForce(T, P):
 	print("*************************************************")
 	print("************* Brute Force Algorithm *************")

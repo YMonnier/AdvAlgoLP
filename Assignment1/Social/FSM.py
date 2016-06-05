@@ -20,6 +20,12 @@ def computeTransition(P):
 			trans[q][c]=k
 	return trans
 
+
+'''
+	Finite State Machine Algorithm
+	@param T: The search area
+	@param P: The candidate to do the search
+'''
 def FSM(T, P):
 	print("*************************************************")
 	print("***************** FSM Algorithm *****************")

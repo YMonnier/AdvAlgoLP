@@ -7,10 +7,10 @@
 
 import time
 import string
-"""
+'''
 	Preprocessing sunday
 	@param P: Text
-"""
+'''
 def preprocessing(P):
 	m = len(P)
 	occ = {}
@@ -25,12 +25,12 @@ def preprocessing(P):
 
 	return occ
 
-"""
+'''
 	Check pattern matches with text at specific index
 	@param T: Text
 	@param P: Pattern
 	@param i: Index from text
-"""
+'''
 def isInP(T, P, i):
 	for char in P:
 		if char != T[i]:
@@ -39,9 +39,11 @@ def isInP(T, P, i):
 
 	return True
 
-"""
+'''
 	Sunday Algorithm
-"""
+	@param T: The search area
+	@param P: The candidate to do the search
+'''
 def sunday(T, P):
 	print("**************************************************")
 	print("**************** Sunday Algorithm ****************")

@@ -21,6 +21,12 @@ def preprocessing(P):
 		pi[q] = k
 	return pi
 
+
+'''
+	Knuth-Morris-Pratt Algorithm
+	@param T: The search area
+	@param P: The candidate to do the search
+'''
 def KMP(T, P):
 	print("*************************************************")
 	print("***************** KMP Algorithm *****************")

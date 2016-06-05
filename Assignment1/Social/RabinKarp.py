@@ -7,6 +7,11 @@
 
 import time
 
+'''
+	Rabin-Karp Algorithm
+	@param T: The search area
+	@param P: The candidate to do the search
+'''
 def rabinKarp(T, P):
 	print("*************************************************")
 	print("************* Rabin-Karp Algorithm **************")
@@ -17,17 +22,17 @@ def rabinKarp(T, P):
 
 	n = len(T)
 	m = len(P)
-	d = 256
+	d = 257
 	q = 11
 	h = pow(d,m-1)%q
-	p = 0
-	t = 0
+	hash_p = 0
+	hash_t = 0
 	shifts = []
-	for i in range(m): # preprocessing
-		p = (d * p + ord(P[i])) % q
-		t = (d * t + ord(T[i])) % q
+	for i in range(m): # preprocessing (hash)
+		hash_p = (d * hash_p + ord(P[i])) % q
+		hash_t = (d * hash_t + ord(T[i])) % q
 	for s in range(n - m + 1): # matching
-		if p == t:
+		if hash_p == hash_t: # if match
 			match = True
 			for i in range(m):
 				if P[i] != T[s + i]:
@@ -35,11 +40,10 @@ def rabinKarp(T, P):
 					break
 			if match:
 				shifts.append(s)
-		if s < n-m:
-			t = (t - h * ord(T[s])) % q
-			t = (t * d + ord(T[s + m])) % q
-			t = (t + q) % q
-	
+		if s < n-m: # substract first text letter hash and add last hash letter
+			hash_t = (hash_t - h * ord(T[s])) % q
+			hash_t = (hash_t * d + ord(T[s + m])) % q
+			hash_t = (hash_t + q) % q
 	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))
-	#print("	==> shifts " + str(shifts))
+	#print("	==> shifts " + str(shifts))	

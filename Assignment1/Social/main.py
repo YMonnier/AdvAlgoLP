@@ -11,18 +11,24 @@ import Sunday
 import KMP
 import FSM
 import RabinKarp
+import gc
 #fileName = input('Your txt file: ')
 #pattern = input('Your pattern: ')
 
+gc.disable() 
+
 fileName = 'book.txt'
-pattern = 'unapproachable'
-
-
-print("	==> Pattern :: %s" %pattern)
-print("	==> Pattern Length :: %d" %len(pattern))
+pattern = 'of'
 
 # Get content's file
 s = reader.readFile(fileName)
+
+#print("	==> Text :: %s" %s)
+print("	==> Pattern :: %s" %pattern)
+print("	==> Pattern Length :: %d" %len(pattern))
+
+
+
 
 #Bruteforce Algorithm
 Bruteforce.bruteForce(s, pattern)
