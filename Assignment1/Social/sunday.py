@@ -36,7 +36,6 @@ def isInP(T, P, i):
 		if char != T[i]:
 			return False
 		i += 1
-
 	return True
 
 '''
@@ -59,9 +58,8 @@ def sunday(T, P):
 	shifts = []
 	n = len(T)
 	m = len(P)
-	occ = preprocessing(P)
 
-	for i in range(n - m + 1):
+	while(i < n):
 		if isInP(T, P, i):
 			shifts.append(i)
 		i += m
