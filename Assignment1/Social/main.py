@@ -21,6 +21,8 @@ fileName = 'book.txt'
 
 #reader.readFile("Paragraphs/para0.txt")
 #reader.readFile("Paragraphs/para1.txt") 
+#reader.readFile("Paragraphs/para2.txt") 
+#"of"
 pattern = reader.readFile("Paragraphs/para2.txt")
 
 # Get content's file
