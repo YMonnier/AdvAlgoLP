@@ -18,7 +18,10 @@ import gc
 gc.disable() 
 
 fileName = 'book.txt'
-pattern = 'of'
+
+#reader.readFile("Paragraphs/para0.txt")
+#reader.readFile("Paragraphs/para1.txt") 
+pattern = reader.readFile("Paragraphs/para2.txt")
 
 # Get content's file
 s = reader.readFile(fileName)

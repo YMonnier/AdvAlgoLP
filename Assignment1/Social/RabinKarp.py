@@ -23,7 +23,7 @@ def rabinKarp(T, P):
 	n = len(T)
 	m = len(P)
 	d = 257
-	q = 11
+	q = 101
 	h = pow(d,m-1)%q
 	hash_p = 0
 	hash_t = 0
