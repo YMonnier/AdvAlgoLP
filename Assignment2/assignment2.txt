@@ -1,0 +1,25 @@
+* Social Part:
+
+ - "Triwizard Tournament"
+One competition in the TT is to get out of a labyrinth as quickly as possible. Your task as the tournament supervisor is:
+given the labyrinth map, initial (current) positions of the three competing wizzards and their relative speeds
+(in corridors per minute) predict which of them will reach the exit first. Assume that the magical wands used in the play
+are capable of guiding the wizards to the exit along a shortest possible path.
+
+ - "Family party"
+Your beloved aunt Petunia is throwing her namesday party, to which as usual, she invites all the family.
+There are however some animosities in the family. Aunt's idea is to have two separate tables 
+for quest during the party, so that no two disliking one another pair of people will sit at the same table.
+Given the list of invited guests and a list of your aunt's suggestions on "who doesn't like whom",
+your task, as your aunt's dear little sausage computer genius, is to set up a "sitting scheme".
+Using DFS algorithm is a part of task requirement.
+ 
+***** Premium Part - "In the Labyrinth He Dwells"
+In the Aunt's namesday task make sure you are using a nonrecursive solution.
+
+In the TT tasks assume that corridors may have different positive lengths, which are given in the labyrinth map.
+The evil Lord Waldemar haunts the labyrinth. As one of his evil disciples your task is to find whether it is possible to block one corridor
+of the labyrinth so that a wizard can be kept from reaching the exit.
+
+
+Maximum complexity allowed for all tasks is linear in the input size
