@@ -13,6 +13,7 @@ class Wizard:
 		position: start position (node)
 		speed: average per minutes
 		time: time to go to the exit
+		magical_wand: way to exit the labyrinth
 	"""
 	def __init__(self, name, position):
 		self.name = name

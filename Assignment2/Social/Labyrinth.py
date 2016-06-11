@@ -2,9 +2,12 @@
 # Author Ysee Monnier
 # University Of Lodz, Poland
 #
-# http://www.bogotobogo.com/python/python_graph_data_structures.php
+# graph data struct: http://www.bogotobogo.com/python/python_graph_data_structures.php
+# Python Patterns: https://www.python.org/doc/essays/graphs/
+
 class Labyrinth(object):
 	"""
+		UNDIRECTED GRAPH
 		graph: labyrinth
 		exit: the exit point
 		wizards: list of wizards
@@ -21,8 +24,6 @@ class Labyrinth(object):
 	def add_node(self, node):
 		if node not in self.graph:
 			self.graph[node] = Node(node)
-			#self.graph.sort()# = sorted(self.graph, key=attrgetter(0))
-
 
 	def add_edge(self, fr, to):
 		if fr not in self.graph:
@@ -60,6 +61,11 @@ class Labyrinth(object):
 
 
 class Node(object):
+	'''
+		name, node's id/name 
+		visited, true if node is visited, otherwise false
+		neigbhbors, list of neigbhbors
+	'''
 	def __init__(self, name,):
 		self.name = name
 		self.visited = False
