@@ -28,6 +28,18 @@ class DislikeNetwork(object):
 		self.graph[fr].add_neighbor(self.graph[to])
 
 
+	'''
+		print the current graph
+	'''
+	def __str__(self):
+		res = "Family\n---------\n"
+		for v in self.graph:
+			res += str(self.graph[v].name) + " dislikes: "
+			res += "    " + str(map(lambda n: n.name,self.graph[v].neighbors))
+			res+="\n"
+		return res
+
+
 class Node(object):
 	'''
 		name: person's name (node's id)
