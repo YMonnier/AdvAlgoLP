@@ -5,6 +5,7 @@
 
 from random import randint
 from Queue import Queue
+import math
 
 class Wizard:
 	"""
@@ -19,8 +20,10 @@ class Wizard:
 		self.magical_wand = []
 
 	def __str__(self):
+		time = math.ceil(float(len(self.magical_wand))/float(self.speed))
 		res = "  +| %s, speed: %d\n" % (self.name, self.speed)
 		res += "   | magical wand says to go by this way: " + str(self.magical_wand) + "\n"
+		res += "   | you will arrive in " + str(int(time)) + " minutes\n"
 		return res
 
 	'''
@@ -44,14 +47,12 @@ class Wizard:
 
 		# Breadth First Search Algorithm
 		while not Q.empty():
-			print Q.queue
 			node = Q.get()
 			for n in labyrinth[node].neighbors:
 				if not labyrinth[n.name].visited:
 					labyrinth[n.name].visited = True
 					pi[n.name] = node
 					Q.put(n.name)
-			print Q.queue
 		
 		clear_node()
 
@@ -61,6 +62,4 @@ class Wizard:
 		while p != -1:
 			p = pi[p]
 			path.insert(0, p)
-		self.magical_wand = path[1:]
-
-	
+		self.magical_wand = path[2:]
