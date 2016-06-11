@@ -12,18 +12,19 @@ class Wizard:
 		name: wizard name
 		position: start position (node)
 		speed: average per minutes
+		time: time to go to the exit
 	"""
 	def __init__(self, name, position):
 		self.name = name
 		self.position = position
 		self.speed = randint(1, 3)
 		self.magical_wand = []
+		self.time = 0
 
 	def __str__(self):
-		time = math.ceil(float(len(self.magical_wand))/float(self.speed))
 		res = "  +| %s, speed: %d\n" % (self.name, self.speed)
 		res += "   | magical wand says to go by this way: " + str(self.magical_wand) + "\n"
-		res += "   | you will arrive in " + str(int(time)) + " minutes\n"
+		res += "   | you will arrive in " + str(self.time) + " minutes\n"
 		return res
 
 	'''
@@ -63,3 +64,4 @@ class Wizard:
 			p = pi[p]
 			path.insert(0, p)
 		self.magical_wand = path[2:]
+		self.time = int(math.ceil(float(len(self.magical_wand))/float(self.speed)))
