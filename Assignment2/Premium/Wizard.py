@@ -47,18 +47,14 @@ class Wizard:
 		pi = {}
 
 		def dijkstra(graph, start, target):
-			print 'DIJKSTRA :: %s --> %s' % (start.name, target.name)
 			start.distance = 0
 
-			# Put tuple pair into the priority queue
-			queue = [(graph[v].distance,v) for v in graph]
+			queue = [v for v in graph]
 			heapq.heapify(queue)
 
 			while len(queue):
-				# Pops a vertex with the smallest distance 
-				uv = heapq.heappop(queue)
-				print '-----> (%s,%s)' % (uv[0], uv[1])
-				current = graph[uv[1]]
+				v = heapq.heappop(queue)
+				current = graph[v]
 				current.visited = True
 
 				for n in current.neighbors:
@@ -81,7 +77,7 @@ class Wizard:
 		shortest(target, path)
 
 		clear_node()
-		
+
 		self.magical_wand = path[::-1]
 		self.time = int(math.ceil(float(len(self.magical_wand))/float(self.speed)))
 

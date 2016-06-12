@@ -17,6 +17,8 @@ class Labyrinth(object):
 		self.graph = {}
 		self.exit = ''
 		self.wizards = []
+		#self.count = 0 # use for haunt function
+		self.bridges = []
 
 	def __iter__(self):
 		return iter(self.graph.values())
@@ -41,6 +43,39 @@ class Labyrinth(object):
 
 	def set_exit_point(self, position):
 		self.exit = position
+
+	'''
+		indicate which corridor the EVIL can block to 
+		stop the wizards to reach the exit.
+		@return v, if it possible to block return the name's node
+		otherwise None
+	'''
+	def haunt(self):
+		def dfs(u, v, pre, low, count): # Apply DFS to find bridges
+			count += 1
+			pre[v] = count
+			low[v] = pre[v]
+			for n in self.graph[v].neighbors:
+				if pre[n.name] == -1:
+					dfs(v, n.name, pre, low, count)
+					low[v] = min(low[v], low[n.name])
+					if low[n.name] == pre[n.name]:
+						self.bridges.append((v, n.name))
+				elif n.name != u:
+					low[v] = min(low[v], pre[n.name])
+
+		if self.graph[self.exit].neighbors == 1:
+			return self.graph[self.exit][0].name
+		else:
+			low = {n:-1 for n in self.graph}
+			pre = {n:-1 for n in self.graph}
+			count = 1
+			for n in self.graph:
+				if pre[n] == -1:
+					dfs(n, n, pre, low, count)
+			print pre
+			print low
+			return self.bridges
 
 	'''
 		Print each nodes with their neigbhbors
