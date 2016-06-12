@@ -17,13 +17,13 @@ labyrinth.add_node('E')
 labyrinth.add_node('F')
 
 # Add edges
-labyrinth.add_edge('A', 'B')
-labyrinth.add_edge('C', 'B')
-labyrinth.add_edge('D', 'B')
-labyrinth.add_edge('D', 'E')
-labyrinth.add_edge('E', 'C')
-labyrinth.add_edge('D', 'F')
-labyrinth.add_edge('E', 'F')
+labyrinth.add_edge('A', 'B', 20)
+labyrinth.add_edge('C', 'B', 5)
+labyrinth.add_edge('D', 'B', 10)
+labyrinth.add_edge('D', 'E', 10)
+labyrinth.add_edge('E', 'C', 10)
+labyrinth.add_edge('D', 'F', 30)
+labyrinth.add_edge('E', 'F', 10)
 
 # Set the labyrinth exit
 labyrinth.set_exit_point('F')
@@ -48,10 +48,10 @@ for minute in xrange(1, game_time + 1):
 	for w in wizards:
 		if minute < w.time:
 			res += "    +| %s\n" % w.name
-			res += "     | %s\n" % (w.magical_wand[((minute-1) * w.speed):(minute * w.speed)])
+			res += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + "\n"
 		elif minute == w.time: 
 			res += "    +| %s\n" % w.name
-			res += "     | %s ARRIVED\n" % (w.magical_wand[((minute-1) * w.speed):(minute * w.speed)])
+			res += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + " ARRIVED\n"
 
 
 min_time = min(w.time for w in wizards)
@@ -59,9 +59,9 @@ winners = filter(lambda w: w.time == min_time, wizards)
 
 if len(winners) > 1:
 	res += "\n  -------- WINNERS --------  \n"
-	res += "    %s" % map(lambda w: w.name, winners)
+	res += "    " + str(map(lambda w: w.name, winners))
 else:
 	res += "\n  -------- WINNER --------  \n"
-	res += "    %s" % winners[0].name
+	res += "    " + str(winners[0].name)
 
 print res
