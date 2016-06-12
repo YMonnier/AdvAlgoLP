@@ -4,7 +4,7 @@
 #
 
 from random import randint
-from Queue import Queue
+import heapq
 import math
 
 class Wizard:
@@ -23,7 +23,7 @@ class Wizard:
 		self.time = 0
 
 	def __str__(self):
-		res = "  +| %s, speed: %d\n" % (self.name, self.speed)
+		res = "  +| %s, speed: %d, position: %s\n" % (self.name, self.speed, self.position)
 		res += "   | magical wand says to go by this way: " + str(self.magical_wand) + "\n"
 		res += "   | you will arrive in " + str(self.time) + " minutes\n"
 		return res
@@ -39,30 +39,50 @@ class Wizard:
 			for n in labyrinth:
 				labyrinth[n].visited = False
 
+		def shortest(v, path):
+			if v.previous and v.previous.distance != 0:
+				path.append(v.previous.name)
+				shortest(v.previous, path)
+
 		pi = {}
-		Q = Queue()
-		
-		# Init
-		pi[self.position] = -1 # pi function(predecessor)
-		Q.put(self.position)
-		labyrinth[self.position].visited = True
 
-		# Breadth First Search Algorithm
-		while not Q.empty():
-			node = Q.get()
-			for n in labyrinth[node].neighbors:
-				if not labyrinth[n.name].visited:
-					labyrinth[n.name].visited = True
-					pi[n.name] = node
-					Q.put(n.name)
-		
+		def dijkstra(graph, start, target):
+			print 'DIJKSTRA :: %s --> %s' % (start.name, target.name)
+			start.distance = 0
+
+			# Put tuple pair into the priority queue
+			queue = [(graph[v].distance,v) for v in graph]
+			heapq.heapify(queue)
+
+			while len(queue):
+				# Pops a vertex with the smallest distance 
+				uv = heapq.heappop(queue)
+				print '-----> (%s,%s)' % (uv[0], uv[1])
+				current = graph[uv[1]]
+				current.visited = True
+
+				for n in current.neighbors:
+					if n.visited: # if visited, skip
+						continue
+					new_dist = current.distance + current.get_weight(n)
+					
+					if new_dist < n.distance:
+						n.distance = new_dist
+						n.previous = current
+
+		# Exec
+		start = labyrinth[self.position]
+		target = labyrinth[exit]
+
+		dijkstra(labyrinth, start, target) 
+
+		#Path
+		path = [target.name]
+		shortest(target, path)
+
 		clear_node()
-
-		# Draw the path
-		p = exit
-		path = [p]
-		while p != -1:
-			p = pi[p]
-			path.insert(0, p)
-		self.magical_wand = path[2:]
+		
+		self.magical_wand = path[::-1]
 		self.time = int(math.ceil(float(len(self.magical_wand))/float(self.speed)))
+
+		

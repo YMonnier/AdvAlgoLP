@@ -8,7 +8,7 @@ from Wizard import Wizard
 
 labyrinth = Labyrinth()
 
-# Add nodes
+# 1 - Add nodes
 labyrinth.add_node('A')
 labyrinth.add_node('B')
 labyrinth.add_node('C')
@@ -16,7 +16,7 @@ labyrinth.add_node('D')
 labyrinth.add_node('E')
 labyrinth.add_node('F')
 
-# Add edges
+# 2 - Add edges
 labyrinth.add_edge('A', 'B', 20)
 labyrinth.add_edge('C', 'B', 5)
 labyrinth.add_edge('D', 'B', 10)
@@ -25,13 +25,14 @@ labyrinth.add_edge('E', 'C', 10)
 labyrinth.add_edge('D', 'F', 30)
 labyrinth.add_edge('E', 'F', 10)
 
-# Set the labyrinth exit
+# 3 - Set the labyrinth exit
 labyrinth.set_exit_point('F')
 
+# 4 - Add wizards
 labyrinth.add_wizard(Wizard('Harry Potter', 'A'))
 labyrinth.add_wizard(Wizard('Lord Voldemort', 'C'))
 
-print labyrinth
+
 
 
 # Engine
@@ -64,4 +65,5 @@ else:
 	res += "\n  -------- WINNER --------  \n"
 	res += "    " + str(winners[0].name)
 
+print labyrinth
 print res

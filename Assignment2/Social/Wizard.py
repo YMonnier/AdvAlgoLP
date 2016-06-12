@@ -38,6 +38,8 @@ class Wizard:
 		def clear_node():
 			for n in labyrinth:
 				labyrinth[n].visited = False
+				labyrinth[n].distance = sys.maxint # Set distance to infinity
+				labyrinth[n].previous = None # No predecessor
 
 		pi = {}
 		Q = Queue()
