@@ -83,20 +83,15 @@ if __name__ == '__main__':
 
 	print network
 	tables = createPlan(network.graph)
-	print tables
+	
 	#Print tables
 	maxTab = max(map(lambda t: len(t), tables))
-	print maxTab
-	res = "|     Table 1     |     Table 2     |     Get Out     |\n"
+	res = "|-----------------|-----------------|-----------------|\n"
+	res += "|     Table 1     |     Table 2     |     Get Out     |\n"
+	res += "|-----------------|-----------------|-----------------|\n"
 	for i in range(maxTab):
-		t1 = "test %s" % tables[0][i] if i < len(tables[0]) else ''
-		t2 = "test %s" % tables[1][i] if i < len(tables[1]) else ''
-		t3 = "test %s" % tables[2][i] if i < len(tables[2]) else ''
-		print t3
-		res += "| " + str(tables[0][i])
-		#res += 
-
-
-
-
+		t1 = "%s" % tables[0][i] if i < len(tables[0]) else ''
+		t2 = "%s" % tables[1][i] if i < len(tables[1]) else ''
+		t3 = "%s" % tables[2][i] if i < len(tables[2]) else ''
+		res += "| " + str(t1).ljust(16) + "| " + str(t2).ljust(16) + "| " + str(t3).ljust(16) + "|\n"
 	print res
