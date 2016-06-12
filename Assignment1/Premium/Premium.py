@@ -1,3 +1,8 @@
+#
+# Author Ysee Monnier
+# University Of Lodz, Poland
+#
+
 from PIL import Image
 
 '''

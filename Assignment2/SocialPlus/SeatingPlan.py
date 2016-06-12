@@ -36,11 +36,11 @@ def createPlan(graph):
 	# Table of table (Table1, Table2, GetOut)
 	tables = ([], [], [])
 
-	# pi table (predecessor)
+	# pi table (list of predecessor)
 	pi = {n:[] for n in graph}
 
 	# Depth First Algorithm for each node,	
-	for person in graph: # because, the graph can be not connected
+	for person in graph: # because, some nodes can be not connected
 		if not graph[person].visited:
 			stack = []
 			stack.append(person)
