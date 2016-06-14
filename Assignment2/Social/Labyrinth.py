@@ -31,16 +31,33 @@ class Labyrinth(object):
 		if to not in self.graph:
 			self.add_node(to)
 
+		# Undirected
 		self.graph[fr].add_neighbor(self.graph[to])
 		self.graph[to].add_neighbor(self.graph[fr])
 
+	'''
+		Add a wizard to the labyrinth
+		@param wizard, wizard object
+	'''
 	def add_wizard(self, wizard):
 		if wizard not in self.wizards:
 			self.wizards.append(wizard)
 			wizard.use_magical_wand(self.graph, self.exit)
+			self.clear_nodes()
 
+	'''
+		Define exit point into the labyrinth
+		@param position, exit position
+	'''
 	def set_exit_point(self, position):
 		self.exit = position
+
+	'''
+		Re-initialize all node
+	'''
+	def clear_nodes(self):
+		for n in self.graph:
+				self.graph[n].visited = False
 
 	'''
 		Print each nodes with their neigbhbors
@@ -71,5 +88,9 @@ class Node(object):
 		self.visited = False
 		self.neighbors = []
 
+	'''
+		add a neigbhbor to the current node
+		@param neighbor, name's node
+	'''
 	def add_neighbor(self, neighbor):
 		self.neighbors.append(neighbor)

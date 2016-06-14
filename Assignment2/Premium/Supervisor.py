@@ -6,80 +6,96 @@
 from Labyrinth import Labyrinth
 from Wizard import Wizard
 
+labyrinth = Labyrinth()
 
-def evilPlan(graph):
-	return 0
-
-
-
-
-
-if __name__ == '__main__':
-
-	labyrinth = Labyrinth()
-
-	# 1 - Add nodes
-	labyrinth.add_node('A')
-	labyrinth.add_node('B')
-	labyrinth.add_node('C')
-	labyrinth.add_node('D')
-	labyrinth.add_node('E')
-	labyrinth.add_node('F')
-	labyrinth.add_node('G')
-
-	# 2 - Add edges
-	labyrinth.add_edge('A', 'G', 5)
-	labyrinth.add_edge('A', 'B', 20)
-	labyrinth.add_edge('C', 'B', 5)
-	labyrinth.add_edge('D', 'B', 10)
-	labyrinth.add_edge('D', 'E', 10)
-	labyrinth.add_edge('E', 'C', 10)
-	labyrinth.add_edge('D', 'F', 30)
-	labyrinth.add_edge('E', 'F', 10)
-
-	# 3 - Set the labyrinth exit
-	labyrinth.set_exit_point('F')
-
-	# 4 - Add wizards
-	labyrinth.add_wizard(Wizard('Harry Potter', 'A'))
-	labyrinth.add_wizard(Wizard('Lord Voldemort', 'C'))
-
-	# 5 - Haunted the Labyrinth
-	v = labyrinth.haunt()
+# 1 - Add nodes
+labyrinth.add_node('A')
+labyrinth.add_node('B')
+labyrinth.add_node('C')
+labyrinth.add_node('D')
+labyrinth.add_node('E')
+labyrinth.add_node('F')
+labyrinth.add_node('G')
+labyrinth.add_node('H')
+labyrinth.add_node('I')
+labyrinth.add_node('I')
+labyrinth.add_node('J')
+labyrinth.add_node('Y')
 
 
-	# Engine
+# 2 - Add edges
+labyrinth.add_edge('A', 'B', 5)
+labyrinth.add_edge('A', 'C', 10)
+labyrinth.add_edge('B', 'C', 15)
 
-	res = "---------------------------\n"
-	res += "------ THE LABYRINTH ------\n"
-	res += "---------------------------\n\n"
+labyrinth.add_edge('Y', 'C', 20)
 
-	wizards = labyrinth.wizards
-	game_time = max(w.time for w in wizards)
+labyrinth.add_edge('Y', 'D', 20)
+labyrinth.add_edge('E', 'D', 10)
+labyrinth.add_edge('H', 'D', 5)
+labyrinth.add_edge('H', 'E', 5)
+labyrinth.add_edge('H', 'F', 10)
 
-	for minute in xrange(1, game_time + 1):
-		res += "+| minute %d\n" % minute
-		for w in wizards:
-			if minute < w.time:
-				res += "    +| %s\n" % w.name
-				res += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + "\n"
-			elif minute == w.time: 
-				res += "    +| %s\n" % w.name
-				res += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + " ARRIVED\n"
+labyrinth.add_edge('Y', 'J', 20)
+labyrinth.add_edge('J', 'I', 30)
+labyrinth.add_edge('G', 'I', 5)
+
+# 3 - Set the labyrinth exit
+labyrinth.set_exit_point('G')
+
+# 4 - Add wizards
+#labyrinth.add_wizard(Wizard('Harry Potter', 'G'))
+labyrinth.add_wizard(Wizard('Ron Weasley', 'C'))
+labyrinth.add_wizard(Wizard('Draco Malfoy', 'E'))
+
+# 5 - Haunted the Labyrinth
+evilPlan = labyrinth.haunt()
 
 
-	min_time = min(w.time for w in wizards)
-	winners = filter(lambda w: w.time == min_time, wizards)
+# Engine printing
 
-	if len(winners) > 1:
-		res += "\n  -------- WINNERS --------  \n"
-		res += "    " + str(map(lambda w: w.name, winners))
-	else:
-		res += "\n  -------- WINNER --------  \n"
-		res += "    " + str(winners[0].name)
+game = "---------------------------\n"
+game += "------ THE LABYRINTH ------\n"
+game += "---------------------------\n\n"
 
-	#print labyrinth
-	#print res
+wizards = labyrinth.wizards
+game_time = max(w.time for w in wizards)
 
-	print v
+for minute in xrange(1, game_time + 1):
+	game += "+| minute %d\n" % minute
+	for w in wizards:
+		if minute < w.time:
+			game += "    +| %s\n" % w.name
+			game += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + "\n"
+		elif minute == w.time: 
+			game += "    +| %s\n" % w.name
+			game += "     | " + str(w.magical_wand[((minute-1) * w.speed):(minute * w.speed)]) + " ARRIVED\n"
 
+
+min_time = min(w.time for w in wizards)
+winners = filter(lambda w: w.time == min_time, wizards)
+
+if len(winners) > 1:
+	game += "\n  -------- WINNERS --------  \n"
+	game += "    " + str(map(lambda w: w.name, winners))
+else:
+	game += "\n  -------- WINNER --------  \n"
+	game += "    " + str(winners[0].name)
+
+evil = "\n---------------------------\n"
+evil += "------ THE EVIL PLAN ------\n"
+evil += "---------------------------\n\n"
+
+if len(evilPlan) == 0:
+	evil += "Lord Waldemar is too bad..."
+else:
+	evil += "Lord Waldemar can block: \n"
+	for b in evilPlan:
+		for w in evilPlan[b]:
+			evil += "     |  %s\n" % map(lambda w: w.name,labyrinth.get_wizard(w))
+
+		evil += "       at position %s\n\n" % b
+
+print labyrinth
+#print game
+print evil

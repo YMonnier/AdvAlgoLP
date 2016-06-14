@@ -34,27 +34,23 @@ class Wizard:
 		@param labyrinth, Graph
 		@param exit, the exit positon
 	'''
-	def use_magical_wand(self,labyrinth, exit): 
-		def clear_node():
-			for n in labyrinth:
-				labyrinth[n].visited = False
-
+	def use_magical_wand(self, labyrinth, exit): 
 		def shortest(v, path):
 			if v.previous and v.previous.distance != 0:
 				path.append(v.previous.name)
 				shortest(v.previous, path)
 
-		pi = {}
-
 		def dijkstra(graph, start, target):
 			start.distance = 0
 
-			queue = [v for v in graph]
+			#queue = [v for v in graph]
+			queue = [(graph[v].distance, v) for v in graph]
 			heapq.heapify(queue)
+			#heapq.heapify(queue)
 
 			while len(queue):
 				v = heapq.heappop(queue)
-				current = graph[v]
+				current = graph[v[1]]
 				current.visited = True
 
 				for n in current.neighbors:
@@ -66,6 +62,11 @@ class Wizard:
 						n.distance = new_dist
 						n.previous = current
 
+
+				# Rebuild the queue with unvisited nodes
+				queue = [(graph[v].distance, v) for v in graph if not graph[v].visited]
+				heapq.heapify(queue)
+
 		# Exec
 		start = labyrinth[self.position]
 		target = labyrinth[exit]
@@ -75,8 +76,6 @@ class Wizard:
 		#Path
 		path = [target.name]
 		shortest(target, path)
-
-		clear_node()
 
 		self.magical_wand = path[::-1]
 		self.time = int(math.ceil(float(len(self.magical_wand))/float(self.speed)))

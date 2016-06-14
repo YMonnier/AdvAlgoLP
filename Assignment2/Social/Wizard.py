@@ -8,13 +8,13 @@ from Queue import Queue
 import math
 
 class Wizard:
-	"""
+	'''
 		name: wizard name
 		position: start position (node)
 		speed: average per minutes
 		time: time to go to the exit
 		magical_wand: way to exit the labyrinth
-	"""
+	'''
 	def __init__(self, name, position):
 		self.name = name
 		self.position = position
@@ -35,12 +35,6 @@ class Wizard:
 		@param exit, the exit positon
 	'''
 	def use_magical_wand(self,labyrinth, exit): 
-		def clear_node():
-			for n in labyrinth:
-				labyrinth[n].visited = False
-				labyrinth[n].distance = sys.maxint # Set distance to infinity
-				labyrinth[n].previous = None # No predecessor
-
 		pi = {}
 		Q = Queue()
 		
