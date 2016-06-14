@@ -50,7 +50,7 @@ def KMP(T, P):
 			q += 1 # next character matches
 		if q == m: # is all of P matched
  			shifts.append(i - (m-1))
-			q = 0#pi[q-m] # look for the next match
+			q = 0 # pi[q-m] # look for the next match
 
 	print("	==> Execution time: %s seconds" % ((time.time() - start_time)))
 	print("	==> %s matchings" % len(shifts))

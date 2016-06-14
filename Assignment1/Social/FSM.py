@@ -8,6 +8,9 @@
 import string
 import time
 
+'''
+	Build a two-dimentional array which reprensent the Finite Automata
+'''
 def computeTransition(P):
 	m = len(P)
 	alphabet = string.ascii_letters + string.punctuation + string.digits + string.whitespace
@@ -36,7 +39,6 @@ def FSM(T, P):
 
 	#Preprocessing
 	trans = computeTransition(P)
-
 	shifts = []
 	m = len(P)
 	n = len(T)
