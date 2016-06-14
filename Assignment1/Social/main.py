@@ -24,7 +24,7 @@ fileName = 'book.txt'
 #reader.readFile("Paragraphs/para2.txt") 
 #"of"
 #pattern = reader.readFile("Paragraphs/para2.txt")
-pattern = "ventilator"
+pattern = "his"
 # Get content's file
 s = reader.readFile(fileName)
 
@@ -33,16 +33,16 @@ print("	==> Pattern :: %s" %pattern)
 print("	==> Pattern Length :: %d" %len(pattern))
 
 #Bruteforce Algorithm
-#Bruteforce.bruteForce(s, pattern)
+Bruteforce.bruteForce(s, pattern)
 
 #Sunday Algorithm
-#Sunday.sunday(s, pattern)
+Sunday.sunday(s, pattern)
 
 #KMP Algorithm
-#KMP.KMP(s, pattern)
+KMP.KMP(s, pattern)
 
 #FSM Algorithm
 FSM.FSM(s, pattern)
 
 #Rabin-Karp Algorithm
-#RabinKarp.rabinKarp(s, pattern)
+RabinKarp.rabinKarp(s, pattern)
