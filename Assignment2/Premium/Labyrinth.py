@@ -93,7 +93,6 @@ class Labyrinth(object):
 					dfs(v, n.name, pre, low, count, res)
 					low[v] = min(low[v], low[n.name])
 					if low[n.name] == pre[n.name]:
-						print 'TUPLE (%s, %s)' % (v, n.name)
 						res.append((v, n.name))
 				elif n.name != u:
 					low[v] = min(low[v], pre[n.name])
